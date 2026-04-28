@@ -1,0 +1,56 @@
+
+
+  *
+ ***
+*****
+*****
+  *
+  *
+  *
+  *
+  *
+
+
+
+
+
+
+let n = 5;
+
+// 🔺 Top Pyramid (1, 3, 5)
+for (let i = 1; i <= 3; i++) {
+  let row = "";
+
+  // spaces
+  for (let j = 1; j <= 3 - i; j++) {
+    row += " ";
+  }
+
+  // stars (odd numbers)
+  for (let k = 1; k <= 2 * i - 1; k++) {
+    row += "*";
+  }
+
+  console.log(row);
+}
+
+// ➖ Middle Full Line
+let fullRow = "";
+for (let i = 1; i <= 5; i++) {
+  fullRow += "*";
+}
+console.log(fullRow);
+
+// 🔻 Vertical Line
+for (let i = 1; i <= 5; i++) {
+  let row = "";
+
+  // spaces (center align)
+  for (let j = 1; j <= 2; j++) {
+    row += " ";
+  }
+
+  row += "*";
+
+  console.log(row);
+}
