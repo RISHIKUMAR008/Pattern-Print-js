@@ -1,0 +1,56 @@
+
+
+@              
+@              
+@****          
+@   ****      @
+@      ****   @
+          ****@
+              @
+              @
+
+
+
+
+
+function patternTwo(n = 4) {
+    let x = 0;
+    const limit = 2 * n;
+
+    for (let i = 0; i < limit; i++) {
+        let row = "";
+        let flag = false;
+
+        // Left border symbol
+        if (i < n + 1) row += "@";
+        else row += " ";
+
+        // Middle pattern logic
+        const innerLimit = n * (n - 1) + 1;
+        for (let j = 0; j < innerLimit; j++) {
+            const midStart = Math.floor(n / 2);
+            const midEnd = 2 * n - Math.floor(n / 2);
+
+            if (i >= midStart && i < midEnd) {
+                if (j < (n - 1) * x || j > (n - 1) * x + n - 1) {
+                    row += " ";
+                } else {
+                    row += "*";
+                    flag = true;
+                }
+            } else {
+                row += " ";
+            }
+        }
+
+        if (flag) x++;
+
+        // Right border symbol
+        if (i >= n - 1) row += "@";
+        else row += " ";
+
+        console.log(row);
+    }
+}
+
+patternTwo(4);
