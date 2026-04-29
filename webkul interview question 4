@@ -1,0 +1,71 @@
+
+
+      *
+     ***
+    *****
+   *******
+  *       *
+ **       **
+***       ***
+***************
+***       ***
+ **       **
+  *       *
+
+
+
+
+/**
+ * Generates the complex tree/arrow pattern
+ * @param {number} n - The base size (input 7 in the screenshot)
+ */
+function printPattern(n) {
+    // 1. Top Section: Solid Pyramid
+    // The pyramid has (n/2 + 1) rows
+    const pyramidHeight = Math.floor(n / 2) + 1;
+    
+    for (let i = 1; i <= pyramidHeight; i++) {
+        let row = "";
+        // Spaces for alignment
+        for (let j = 1; j <= n - i; j++) row += " ";
+        // Stars (1, 3, 5, 7...)
+        for (let j = 1; j <= (2 * i - 1); j++) row += "*";
+        console.log(row);
+    }
+
+    // 2. Middle Section: Upper Split Wings
+    // This runs from after the pyramid to just before the middle line
+    const wingSize = Math.floor(n / 2);
+    for (let i = 1; i <= wingSize; i++) {
+        let row = "";
+        // Leading spaces
+        for (let j = 1; j <= wingSize - i; j++) row += " ";
+        // Left stars
+        for (let j = 1; j <= i; j++) row += "*";
+        // Middle gap
+        for (let j = 1; j <= n; j++) row += " ";
+        // Right stars
+        for (let j = 1; j <= i; j++) row += "*";
+        console.log(row);
+    }
+
+    // 3. Horizontal Divider (The long line)
+    console.log("*".repeat(n * 2 + 1));
+
+    // 4. Bottom Section: Lower Split Wings (Inverse of Section 2)
+    for (let i = wingSize; i >= 1; i--) {
+        let row = "";
+        // Leading spaces
+        for (let j = 1; j <= wingSize - i; j++) row += " ";
+        // Left stars
+        for (let j = 1; j <= i; j++) row += "*";
+        // Middle gap
+        for (let j = 1; j <= n; j++) row += " ";
+        // Right stars
+        for (let j = 1; j <= i; j++) row += "*";
+        console.log(row);
+    }
+}
+
+// Execute with n = 7 as seen in the screenshot
+printPattern(7);
